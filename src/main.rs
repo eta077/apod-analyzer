@@ -45,7 +45,8 @@ fn set_wallpaper(file: PathBuf) -> Result<()> {
         SPI_SETDESKWALLPAPER, SPIF_SENDCHANGE, SPIF_UPDATEINIFILE, SystemParametersInfoW,
     };
 
-    let mut wide = file.as_os_str()
+    let mut wide = file
+        .as_os_str()
         .encode_wide()
         .chain(iter::once(0))
         .collect::<Vec<u16>>();
